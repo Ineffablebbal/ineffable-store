@@ -1,0 +1,340 @@
+/* style.css */
+:root {
+    --primary: #a855f7;
+    --secondary: #ff0055;
+    --dark: #0a0a0a;
+    --neon-glow: 0 0 10px rgba(168, 85, 247, 0.5),
+                 0 0 20px rgba(168, 85, 247, 0.3);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Orbitron', sans-serif;
+    background: var(--dark);
+    color: #fff;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Анимированные элементы */
+.cyber-grid {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: 
+        linear-gradient(to right, rgba(168, 85, 247, 0.1) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(168, 85, 247, 0.1) 1px, transparent 1px);
+    background-size: 40px 40px;
+    transform: perspective(500px) rotateX(60deg);
+    animation: gridMove 20s linear infinite;
+}
+
+.cyber-dots {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(
+        rgba(168, 85, 247, 0.15) 2px,
+        transparent 2px
+    );
+    background-size: 50px 50px;
+    animation: dotsFloat 30s linear infinite;
+}
+
+.floating-elements {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.floating-circle {
+    position: absolute;
+    width: var(--size);
+    height: var(--size);
+    border: 2px solid var(--primary);
+    border-radius: 50%;
+    animation: floatCircle 15s ease-in-out infinite;
+    animation-delay: var(--delay);
+    opacity: 0.2;
+}
+
+/* Навигация */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background: rgba(10, 10, 10, 0.8);
+    backdrop-filter: blur(10px);
+}
+
+.navbar-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 2.5rem;
+    font-weight: 800;
+    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: var(--neon-glow);
+}
+
+.nav-menu {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+}
+
+.nav-menu a {
+    color: #fff;
+    text-decoration: none;
+    position: relative;
+    padding: 0.5rem 0;
+}
+
+.nav-menu a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    transform: scaleX(0);
+    transition: transform 0.3s;
+}
+
+.nav-menu a:hover::after {
+    transform: scaleX(1);
+}
+
+/* Герой секция */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.hero-content {
+    text-align: center;
+    z-index: 1;
+}
+
+.cyber-glitch-text {
+    font-size: 6rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    position: relative;
+    text-shadow: 
+        2px 2px var(--primary),
+        -2px -2px var(--secondary);
+    animation: glitch 3s infinite;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    margin: 2rem 0;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.cyber-button {
+    padding: 1rem 2rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-decoration: none;
+}
+
+.cyber-button.outline {
+    background: transparent;
+    border: 2px solid var(--primary);
+}
+
+.cyber-button:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--neon-glow);
+}
+
+/* Анимации */
+@keyframes gridMove {
+    from { transform: perspective(500px) rotateX(60deg) translateY(0); }
+    to { transform: perspective(500px) rotateX(60deg) translateY(40px); }
+}
+
+@keyframes dotsFloat {
+    from { transform: translateY(0); }
+    to { transform: translateY(50px); }
+}
+
+@keyframes floatCircle {
+    0% { transform: translate(0, 0); }
+    50% { transform: translate(30px, -30px); }
+    100% { transform: translate(0, 0); }
+}
+
+@keyframes glitch {
+    0% { text-shadow: 2px 2px var(--primary), -2px -2px var(--secondary); }
+    25% { text-shadow: -2px 2px var(--primary), 2px -2px var(--secondary); }
+    50% { text-shadow: 2px -2px var(--primary), -2px 2px var(--secondary); }
+    75% { text-shadow: -2px -2px var(--primary), 2px 2px var(--secondary); }
+    100% { text-shadow: 2px 2px var(--primary), -2px -2px var(--secondary); }
+}
+
+/* Медиа запросы */
+@media (max-width: 768px) {
+    .cyber-glitch-text {
+        font-size: 3rem;
+    }
+
+    .nav-menu {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 70px);
+        background: rgba(10, 10, 10, 0.95);
+        flex-direction: column;
+        align-items: center;
+        padding: 2rem;
+        transition: 0.3s;
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .burger-menu {
+        display: block;
+        cursor: pointer;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-buttons {
+        flex-direction: column;
+    }
+}
+/* Слайдер товаров */
+.featured-products {
+    padding: 4rem 2rem;
+    background: rgba(168, 85, 247, 0.05);
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.products-slider {
+    display: flex;
+    gap: 2rem;
+    overflow-x: auto;
+    padding: 1rem;
+    scroll-snap-type: x mandatory;
+}
+
+.products-slider::-webkit-scrollbar {
+    height: 8px;
+}
+
+.products-slider::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: 4px;
+}
+
+.product-card {
+    min-width: 300px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    overflow: hidden;
+    scroll-snap-align: start;
+}
+
+.product-image {
+    position: relative;
+    height: 300px;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.product-info {
+    padding: 1.5rem;
+}
+
+.price {
+    color: var(--primary);
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+/* Футер */
+.cyber-footer {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 4rem 2rem;
+    border-top: 1px solid rgba(168, 85, 247, 0.2);
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 3rem;
+}
+
+.footer-section h3 {
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+    font-size: 1.5rem;
+}
+
+.social-links a {
+    color: #fff;
+    transition: color 0.3s;
+}
+
+.social-links a:hover {
+    color: var(--primary);
+}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INEFFABLE - Панель управления</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body class="admin-bg">
+    <nav class="admin-nav">
+        <div class="nav-brand">INEFFABLE</div>
+        <div class="nav-user">
+            <span id="adminName"></span>
+            <button id="logoutBtn" class="cyber-button small">Выйти</button>
+        </div>
+    </nav>
+
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <button class="cyber-button full" data-section="catalog">Каталог</button>
+            <button class="cyber-button full" data-section="slider">Слайдер</button>
+            <button class="cyber-button full" data-section="orders">Заказы</button>
+        </aside>
+
+        <main class="content">
+            <section id="catalog" class="section active">
+                <div class="section-header">
+                    <h2>Управление каталогом</h2>
+                    <button class="cyber-button" id="addProduct">+ Добавить товар</button>
+                </div>
+                <div class="products-table">
+                    <!-- Таблица товаров -->
+                </div>
+            </section>
+
+            <section id="slider" class="section">
+                <div class="section-header">
+                    <h2>Управление слайдером</h2>
+                    <button class="cyber-button" id="addSlide">+ Добавить слайд</button>
+                </div>
+                <div class="slides-grid">
+                    <!-- Сетка слайдов -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Модальное окно для редактирования -->
+    <div id="editModal" class="modal">
+        <!-- Содержимое модального окна -->
+    </div>
+
+    <script src="../js/admin-dashboard.js"></script>
+</body>
+</html>

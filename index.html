@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>INEFFABLE</title>
+   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&display=swap" rel="stylesheet">
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+   <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="cyber-bg">
+   <!-- Анимированные элементы -->
+   <div class="cyber-grid"></div>
+   <div class="cyber-dots"></div>
+   <div class="floating-elements">
+       <div class="floating-circle" style="--delay: 0s; --size: 100px"></div>
+       <div class="floating-circle" style="--delay: 5s; --size: 150px"></div>
+       <div class="floating-circle" style="--delay: 10s; --size: 80px"></div>
+   </div>
+
+   <!-- Навигация -->
+   <nav class="navbar">
+       <div class="navbar-container">
+           <div class="logo">INEFFABLE</div>
+           <ul class="nav-menu">
+               <li><a href="index.html" class="active">Главная</a></li>
+               <li><a href="catalog.html">Каталог</a></li>
+               <li><a href="about.html">О нас</a></li>
+               <li><a href="contact.html">Контакты</a></li>
+           </ul>
+           <div class="nav-icons">
+               <i class="fas fa-search"></i>
+               <i class="fas fa-user"></i>
+               <div class="cart-icon">
+                   <i class="fas fa-shopping-cart"></i>
+                   <span class="cart-count">0</span>
+               </div>
+           </div>
+           <div class="burger-menu">
+               <span></span>
+               <span></span>
+               <span></span>
+           </div>
+       </div>
+   </nav>
+
+   <!-- Основной контент -->
+   <main>
+       <section class="hero">
+           <div class="hero-content">
+               <h1 class="cyber-glitch-text">INEFFABLE</h1>
+               <p class="hero-subtitle">Превосходя границы спортивной экипировки</p>
+               <div class="hero-buttons">
+                   <a href="catalog.html" class="cyber-button">Смотреть каталог</a>
+                   <a href="#about" class="cyber-button outline">Узнать больше</a>
+               </div>
+           </div>
+       </section>
+       <section class="featured-products">
+        <h2 class="section-title">Популярные товары</h2>
+        <div class="products-slider">
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="images/product1.jpg" alt="Product">
+                    <div class="product-overlay">
+                        <span class="new-label">New</span>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>Nike Cosmic Unity</h3>
+                    <p>Баскетбольные кроссовки</p>
+                    <span class="price">1 299 000 сум</span>
+                </div>
+            </div>
+            <!-- Добавьте еще карточек товаров -->
+        </div>
+    </section>
+    
+    <footer class="cyber-footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>INEFFABLE</h3>
+                <p>Премиальная спортивная экипировка</p>
+            </div>
+            <div class="footer-section">
+                <h3>Контакты</h3>
+                <p>Email: ineffablebbal@gmail.com</p>
+                <p>Телефон: +998 33 767 9009</p>
+            </div>
+            <div class="footer-section">
+                <h3>Мы в соцсетях</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-telegram"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+   </main>
+
+   <script src="js/main.js"></script>
+</body>
+</html>

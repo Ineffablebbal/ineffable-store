@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каталог - INEFFABLE</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/catalog.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="logo">INEFFABLE</div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="catalog.html" class="active">Каталог</a></li>
+                <li><a href="about.html">О нас</a></li>
+                <li><a href="contact.html">Контакты</a></li>
+            </ul>
+            <div class="nav-icons">
+                <i class="fas fa-search search-icon"></i>
+                <i class="fas fa-user"></i>
+                <div class="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </div>
+            </div>
+            <div class="burger-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <main class="catalog-container">
+        <aside class="catalog-sidebar">
+            <div class="category-filters">
+                <h3>Категории</h3>
+                <div class="category-group">
+                    <h4>Баскетбол</h4>
+                    <ul>
+                        <li><a href="#" class="filter-link active">Все</a></li>
+                        <li><a href="#" class="filter-link">Мячи</a></li>
+                        <li><a href="#" class="filter-link">Кроссовки</a></li>
+                        <li><a href="#" class="filter-link">Джерси</a></li>
+                        <li><a href="#" class="filter-link">Шорты</a></li>
+                        <li><a href="#" class="filter-link">Защита</a></li>
+                    </ul>
+                </div>
+
+                <div class="category-group">
+                    <h4>Футбол</h4>
+                    <ul>
+                        <li><a href="#" class="filter-link">Мячи</a></li>
+                        <li><a href="#" class="filter-link">Бутсы</a></li>
+                        <li><a href="#" class="filter-link">Форма</a></li>
+                    </ul>
+                </div>
+
+                <div class="category-group">
+                    <h4>Волейбол</h4>
+                    <ul>
+                        <li><a href="#" class="filter-link">Мячи</a></li>
+                        <li><a href="#" class="filter-link">Кроссовки</a></li>
+                        <li><a href="#" class="filter-link">Форма</a></li>
+                    </ul>
+                </div>
+
+                <div class="category-group">
+                    <h4>Одежда</h4>
+                    <ul>
+                        <li><a href="#" class="filter-link">Футболки</a></li>
+                        <li><a href="#" class="filter-link">Худи</a></li>
+                        <li><a href="#" class="filter-link">Штаны</a></li>
+                        <li><a href="#" class="filter-link">Шорты</a></li>
+                    </ul>
+                </div>
+
+                <div class="category-group">
+                    <h4>Аксессуары</h4>
+                    <ul>
+                        <li><a href="#" class="filter-link">Рюкзаки</a></li>
+                        <li><a href="#" class="filter-link">Носки</a></li>
+                        <li><a href="#" class="filter-link">Термобелье</a></li>
+                        <li><a href="#" class="filter-link">Массажеры</a></li>
+                        <li><a href="#" class="filter-link">Постеры</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="price-filter">
+                <h3>Цена</h3>
+                <div class="price-inputs">
+                    <input type="number" placeholder="От" class="price-input">
+                    <input type="number" placeholder="До" class="price-input">
+                    <button class="apply-price">Применить</button>
+                </div>
+            </div>
+        </aside>
+
+        <section class="catalog-content">
+            <div class="catalog-header">
+                <h1>Каталог товаров</h1>
+                <div class="catalog-controls">
+                    <select class="sort-select">
+                        <option value="popular">По популярности</option>
+                        <option value="price-low">Сначала дешевле</option>
+                        <option value="price-high">Сначала дороже</option>
+                        <option value="new">Новинки</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="products-grid">
+                <!-- Пример карточки товара -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/products/ball1.jpg" alt="Баскетбольный мяч">
+                        <div class="product-badges">
+                            <span class="badge new">New</span>
+                            <span class="badge discount">-20%</span>
+                        </div>
+                        <div class="quick-view">
+                            <i class="fas fa-eye"></i>
+                            Быстрый просмотр
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Баскетбол • Мячи</div>
+                        <h3>Баскетбольный мяч Wilson NBA</h3>
+                        <div class="product-price">
+                            <span class="current-price">499 000 сум</span>
+                            <span class="old-price">599 000 сум</span>
+                        </div>
+                        <button class="add-to-cart">
+                            <i class="fas fa-shopping-cart"></i>
+                            В корзину
+                        </button>
+                    </div>
+                </div>
+                <!-- Конец карточки товара -->
+            </div>
+
+            <div class="pagination">
+                <a href="#" class="active">1</a>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <a href="#">4</a>
+                <span>...</span>
+                <a href="#">10</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>INEFFABLE</h3>
+                <p>Премиальная спортивная экипировка по доступным ценам</p>
+            </div>
+            <div class="footer-section">
+                <h3>Контакты</h3>
+                <p>Email: ineffablebbal@gmail.com</p>
+                <p>Телефон: +998 33 767 9009</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/catalog.js"></script>
+</body>
+</html>
