@@ -1,222 +1,245 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
-   <title>INEFFABLE • Premium Basketball Gear</title>
-   
-   <!-- Шрифты -->
-   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-   <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-   <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
-   <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
-   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-   <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-   <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
-   <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
-   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-   
-   <!-- Icons -->
-   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-   
-   <!-- Стили -->
-   <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>INEFFABLE • Premium Basketball Gear</title>
+    
+    <!-- Шрифты -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Иконки -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Стили -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-   <!-- Фоновые эффекты -->
-   <div class="background-effects">
-       <div class="cyber-grid"></div>
-       <div class="particles"></div>
-       <div class="glitch-overlay"></div>
-   </div>
+    <!-- Фоновые эффекты -->
+    <div class="background-effects">
+        <div class="cyber-grid"></div>
+        <div class="particles"></div>
+        <div class="glitch-overlay"></div>
+    </div>
 
-   <!-- Навигация -->
-   <nav class="navbar">
-       <div class="navbar-container">
-           <div class="logo">
-               <span class="logo-text" data-text="INEFFABLE">INEFFABLE</span>
-           </div>
-           
-           <button class="mobile-menu-button">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-           
-           <ul class="nav-links">
-               <li><a href="/" class="nav-link active"><span>ГЛАВНАЯ</span></a></li>
-               <li><a href="/catalog" class="nav-link"><span>КАТАЛОГ</span></a></li>
-               <li><a href="/about" class="nav-link"><span>О НАС</span></a></li>
-               <li><a href="/contacts" class="nav-link"><span>КОНТАКТЫ</span></a></li>
-           </ul>
+    <!-- Навигация -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="/" class="logo">
+                <span class="logo-text" data-text="INEFFABLE">INEFFABLE</span>
+            </a>
+            
+            <button class="mobile-menu-button" aria-label="Меню">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
 
-           <div class="nav-actions">
-               <button class="nav-btn">
-                   <i class="fas fa-search"></i>
-               </button>
-               <button class="nav-btn">
-                   <i class="fas fa-user"></i>
-               </button>
-               <button class="nav-btn cart-btn">
-                   <i class="fas fa-shopping-cart"></i>
-                   <span class="cart-count">0</span>
-               </button>
-           </div>
-       </div>
-   </nav>
+            <ul class="nav-links">
+                <li><a href="/" class="nav-link active">ГЛАВНАЯ</a></li>
+                <li><a href="/catalog" class="nav-link">КАТАЛОГ</a></li>
+                <li><a href="/about" class="nav-link">О НАС</a></li>
+                <li><a href="/contacts" class="nav-link">КОНТАКТЫ</a></li>
+            </ul>
 
-   <!-- Главный контент -->
+            <div class="nav-actions">
+                <button class="nav-btn" aria-label="Поиск">
+                    <i class="fas fa-search"></i>
+                </button>
+                <button class="nav-btn" aria-label="Профиль">
+                    <i class="fas fa-user"></i>
+                </button>
+                <button class="nav-btn cart-btn" aria-label="Корзина">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+    <!-- Главный контент -->
    <main>
-       <section class="hero">
-           <div class="hero-content">
-               <h1 class="hero-title glitch-text" data-text="INEFFABLE">INEFFABLE</h1>
-               <div class="ticker-wrapper">
-                   <div class="ticker">
-                       <div class="ticker-content">
-                           <span>ПРЕМИАЛЬНЫЕ КРОССОВКИ</span>
-                           <span>БАСКЕТБОЛЬНЫЕ МЯЧИ</span>
-                           <span>СПОРТИВНАЯ ЭКИПИРОВКА</span>
-                           <span>ЭКСКЛЮЗИВНЫЕ КОЛЛЕКЦИИ</span>
-                       </div>
-                   </div>
-               </div>
-           </div>
-       </section>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title glitch-text" data-text="INEFFABLE">INEFFABLE</h1>
+            
+            <!-- Бегущая строка -->
+            <div class="ticker-wrapper">
+                <div class="ticker">
+                    <div class="ticker-content">
+                        <span>ПРЕМИАЛЬНЫЕ КРОССОВКИ</span>
+                        <span>БАСКЕТБОЛЬНЫЕ МЯЧИ</span>
+                        <span>СПОРТИВНАЯ ЭКИПИРОВКА</span>
+                        <span>ЭКСКЛЮЗИВНЫЕ КОЛЛЕКЦИИ</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-       <!-- Категории -->
-       <section class="categories">
-           <div class="categories-grid">
-               <div class="category-card" data-category="shoes">
-                   <div class="card-inner">
-                       <div class="card-image">
-                           <img src="images/shoes.jpg" alt="Basketball Shoes">
-                       </div>
-                       <div class="card-content">
-                           <h3>Кроссовки</h3>
-                           <p>Профессиональная баскетбольная обувь</p>
-                       </div>
-                       <div class="card-overlay"></div>
-                   </div>
-               </div>
+    <!-- Категории -->
+    <section class="categories">
+        <div class="categories-grid">
+            <!-- Кроссовки -->
+            <a href="/catalog/shoes" class="category-card" data-category="shoes">
+                <div class="card-inner">
+                    <div class="card-image">
+                        <img src="images/shoes.jpg" alt="Basketball Shoes" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3>Кроссовки</h3>
+                        <p>Профессиональная баскетбольная обувь</p>
+                    </div>
+                    <div class="card-overlay"></div>
+                </div>
+            </a>
 
-               <div class="category-card" data-category="balls">
-                   <div class="card-inner">
-                       <div class="card-image">
-                           <img src="images/balls.jpg" alt="Basketballs">
-                       </div>
-                       <div class="card-content">
-                           <h3>Мячи</h3>
-                           <p>Официальные мячи для игры</p>
-                       </div>
-                       <div class="card-overlay"></div>
-                   </div>
-               </div>
+            <!-- Мячи -->
+            <a href="/catalog/balls" class="category-card" data-category="balls">
+                <div class="card-inner">
+                    <div class="card-image">
+                        <img src="images/balls.jpg" alt="Basketballs" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3>Мячи</h3>
+                        <p>Официальные мячи для игры</p>
+                    </div>
+                    <div class="card-overlay"></div>
+                </div>
+            </a>
 
-               <div class="category-card" data-category="uniform">
-                   <div class="card-inner">
-                       <div class="card-image">
-                           <img src="images/uniform.jpg" alt="Basketball Uniform">
-                       </div>
-                       <div class="card-content">
-                           <h3>Форма</h3>
-                           <p>Профессиональная экипировка</p>
-                       </div>
-                       <div class="card-overlay"></div>
-                   </div>
-               </div>
+            <!-- Форма -->
+            <a href="/catalog/uniform" class="category-card" data-category="uniform">
+                <div class="card-inner">
+                    <div class="card-image">
+                        <img src="images/uniform.jpg" alt="Basketball Uniform" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3>Форма</h3>
+                        <p>Профессиональная экипировка</p>
+                    </div>
+                    <div class="card-overlay"></div>
+                </div>
+            </a>
 
-               <div class="category-card" data-category="accessories">
-                   <div class="card-inner">
-                       <div class="card-image">
-                           <img src="images/accessories.jpg" alt="Basketball Accessories">
-                       </div>
-                       <div class="card-content">
-                           <h3>Аксессуары</h3>
-                           <p>Всё для вашей игры</p>
-                       </div>
-                       <div class="card-overlay"></div>
-                   </div>
-               </div>
-           </div>
-       </section>
+            <!-- Аксессуары -->
+            <a href="/catalog/accessories" class="category-card" data-category="accessories">
+                <div class="card-inner">
+                    <div class="card-image">
+                        <img src="images/accessories.jpg" alt="Basketball Accessories" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3>Аксессуары</h3>
+                        <p>Всё для вашей игры</p>
+                    </div>
+                    <div class="card-overlay"></div>
+                </div>
+            </a>
+        </div>
+    </section>
 
-       <!-- Кнопка каталога -->
-       <div class="cta-section">
-           <a href="/catalog" class="cta-button">
-               <span class="button-text">СМОТРЕТЬ КАТАЛОГ</span>
-               <span class="button-glitch"></span>
-               <div class="button-borders">
-                   <span class="border-top"></span>
-                   <span class="border-right"></span>
-                   <span class="border-bottom"></span>
-                   <span class="border-left"></span>
-               </div>
-           </a>
-       </div>
-
-       <!-- Игры -->
-       <section class="games-section">
-           <div class="games-container">
-               <div class="game-card">
-                   <h3 class="cyber-text">Попади в кольцо</h3>
-                   <div class="basketball-game">
-                       <canvas id="gameCanvas"></canvas>
-                       <div class="game-controls">
-                           <div class="score">Очки: <span>0</span></div>
-                           <button class="game-button">
-                               <span>ИГРАТЬ</span>
-                           </button>
-                       </div>
-                   </div>
-               </div>
-
-                <!-- Факты о баскетболе -->
-                <div class="game-card">
-                    <h3 class="cyber-text">Факты о баскетболе</h3>
-                    <div class="facts-game">
-                        <div class="mystery-box">
-                            <div class="box-front"></div>
-                            <div class="box-back">
-                                <p class="fact-text cyber-text"></p>
-                            </div>
+    <!-- Кнопка каталога -->
+    <div class="cta-section">
+        <a href="/catalog" class="cta-button">
+            <span class="button-text">СМОТРЕТЬ КАТАЛОГ</span>
+            <span class="button-glitch"></span>
+            <div class="button-borders">
+                <span class="border-top"></span>
+                <span class="border-right"></span>
+                <span class="border-bottom"></span>
+                <span class="border-left"></span>
+            </div>
+        </a>
+    </div>
+    <!-- Секция игр -->
+    <section class="games-section">
+        <div class="games-container">
+            <!-- Баскетбольная игра -->
+            <div class="game-card">
+                <h3 class="cyber-text">Попади в кольцо</h3>
+                <div class="basketball-game">
+                    <canvas id="gameCanvas"></canvas>
+                    <div class="game-ui">
+                        <div class="score-display">
+                            <span class="score-label">ОЧКИ:</span>
+                            <span class="score-value">0</span>
                         </div>
-                        <button class="cyber-button fact-button">
-                            <span class="button-text">УЗНАТЬ ФАКТ</span>
+                        <button class="game-button">
+                            <span class="button-text">ИГРАТЬ</span>
                             <span class="button-glitch"></span>
                         </button>
                     </div>
                 </div>
             </div>
-        </section>
 
-        <!-- NBA Widget -->
-        <section class="nba-widget">
-            <h2 class="section-title cyber-text">NBA LIVE SCORES</h2>
-            <div class="scores-container">
-                <div class="scores-grid">
-                    <!-- Заполняется через JavaScript -->
+            <!-- Факты о баскетболе -->
+            <div class="game-card">
+                <h3 class="cyber-text">Факты о баскетболе</h3>
+                <div class="facts-game">
+                    <div class="mystery-box">
+                        <div class="box-front"></div>
+                        <div class="box-content">
+                            <p class="fact-text"></p>
+                        </div>
+                    </div>
+                    <button class="cyber-button fact-button">
+                        <span class="button-text">УЗНАТЬ ФАКТ</span>
+                        <span class="button-glitch"></span>
+                    </button>
                 </div>
             </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <!-- Footer sections -->
         </div>
-        <div class="footer-bottom">
-            <p class="cyber-text">&copy; 2024 INEFFABLE</p>
-        </div>
-    </footer>
+    </section>
 
-    <!-- Scripts -->
-    <script src="js/background-effects.js"></script>
-    <script src="js/basketball-game.js"></script>
-    <script src="js/facts-game.js"></script>
-    <script src="js/nba-widget.js"></script>
-    <script src="js/main.js"></script>
+    <!-- NBA Widget -->
+    <section class="nba-widget">
+        <h2 class="section-title cyber-text">NBA LIVE SCORES</h2>
+        <div class="scores-container">
+            <div class="scores-grid">
+                <!-- Заполняется через JavaScript -->
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-section">
+            <h3 class="glitch-text" data-text="INEFFABLE">INEFFABLE</h3>
+            <p>Премиальная спортивная экипировка</p>
+        </div>
+        
+        <div class="footer-section">
+            <h3>Контакты</h3>
+            <p><i class="fas fa-envelope"></i> ineffablebbal@gmail.com</p>
+            <p><i class="fas fa-phone"></i> +998 94 680 04 09</p>
+        </div>
+        
+        <div class="footer-section">
+            <h3>Мы в соцсетях</h3>
+            <div class="social-links">
+                <a href="#" class="social-icon" target="_blank" rel="noopener">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" class="social-icon" target="_blank" rel="noopener">
+                    <i class="fab fa-telegram"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2024 INEFFABLE. Все права защищены.</p>
+    </div>
+</footer>
+
+<!-- Scripts -->
+<script src="js/basketball-game.js"></script>
+<script src="js/facts-game.js"></script>
+<script src="js/nba-widget.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>
