@@ -1,36 +1,39 @@
+// main.js
 document.addEventListener('DOMContentLoaded', () => {
-    // Мобильное меню
-    const mobileMenuBtn = document.querySelector('.mobile-menu-button');
-    const navLinks = document.querySelector('.nav-links');
-    
-    mobileMenuBtn.addEventListener('click', () => {
-        mobileMenuBtn.classList.toggle('active');
-        navLinks.classList.toggle('active');
-    });
+    initBackgroundEffects();
+    initHeroAnimations();
+    initGameEffects();
+    initMobileMenu();
+    initParallaxEffect();
  });
  
- // Основные частицы
- function initParticles() {
+ // Фоновые эффекты
+ function initBackgroundEffects() {
+    // Создаем частицы
     const particlesContainer = document.querySelector('.particles');
     const particlesCount = 50;
-    const mobileMenuBtn = document.querySelector('.mobile-menu-button');
-    const navLinks = document.querySelector('.nav-links');
-    
-    mobileMenuBtn.addEventListener('click', () => {
-        mobileMenuBtn.classList.toggle('active');
-        navLinks.classList.toggle('active');
-    });
  
     for (let i = 0; i < particlesCount; i++) {
         createParticle(particlesContainer);
     }
+ 
+    // Глитч эффект
+    setInterval(() => {
+        const glitchOverlay = document.querySelector('.glitch-overlay');
+        if (Math.random() < 0.1) {
+            glitchOverlay.style.display = 'block';
+            setTimeout(() => {
+                glitchOverlay.style.display = 'none';
+            }, 100);
+        }
+    }, 2000);
  }
  
  function createParticle(container) {
     const particle = document.createElement('div');
     particle.className = 'particle';
     
-    // Рандомные параметры
+    // Случайное позиционирование и анимация
     particle.style.left = `${Math.random() * 100}vw`;
     particle.style.top = `${Math.random() * 100}vh`;
     particle.style.animationDelay = `${Math.random() * 5}s`;
@@ -39,52 +42,77 @@ document.addEventListener('DOMContentLoaded', () => {
     container.appendChild(particle);
  }
  
- // Баскетбольная игра
+ // Эффекты для основного заголовка
+ function initHeroAnimations() {
+    const title = document.querySelector('.hero-title');
+    if (!title) return;
+ 
+    // Глитч эффект для текста
+    setInterval(() => {
+        if (Math.random() < 0.1) {
+            const originalText = title.getAttribute('data-text');
+            const glitchedText = createGlitchedText(originalText);
+            title.textContent = glitchedText;
+            
+            setTimeout(() => {
+                title.textContent = originalText;
+            }, 100);
+        }
+    }, 2000);
+ }
+ 
+ function createGlitchedText(text) {
+    const glitchChars = '!@#$%^&*()_+-=[]{}|;:,.<>?';
+    return text.split('').map(char => 
+        Math.random() < 0.3 ? 
+        glitchChars[Math.floor(Math.random() * glitchChars.length)] : 
+        char
+    ).join('');
+ }
+ 
+ // Эффекты для игры
+ function initGameEffects() {
+    const canvas = document.getElementById('gameCanvas');
+    if (!canvas) return;
+ 
+    const ctx = canvas.getContext('2d');
+    const game = new BasketballGame(canvas, ctx);
+    game.init();
+ }
+ 
  class BasketballGame {
-    constructor() {
-        this.canvas = document.getElementById('gameCanvas');
-        this.ctx = this.canvas.getContext('2d');
+    constructor(canvas, ctx) {
+        this.canvas = canvas;
+        this.ctx = ctx;
         this.score = 0;
         this.isPlaying = false;
-        this.isDragging = false;
-        
-        // Инициализация мяча
         this.ball = {
             x: 0,
             y: 0,
             radius: 15,
             speed: { x: 0, y: 0 },
-            gravity: 0.5,
-            friction: 0.99,
             isMoving: false
         };
- 
-        // Инициализация кольца
         this.hoop = {
             x: 0,
             y: 0,
             width: 60,
-            height: 45,
-            rimWidth: 5
+            height: 45
         };
- 
-        this.init();
     }
  
     init() {
         this.setCanvasSize();
         this.resetBall();
-        this.setupHoop();
-        this.bindEvents();
+        this.setupEvents();
         this.animate();
     }
  
     setCanvasSize() {
         this.canvas.width = this.canvas.offsetWidth;
         this.canvas.height = this.canvas.offsetHeight;
-    }
- 
-    setupHoop() {
+        
+        // Обновляем позицию кольца
         this.hoop.x = this.canvas.width - 100;
         this.hoop.y = 150;
     }
@@ -97,418 +125,279 @@ document.addEventListener('DOMContentLoaded', () => {
         this.ball.isMoving = false;
     }
  
-    bindEvents() {
-        this.canvas.addEventListener('mousedown', (e) => this.startDrag(e));
-        this.canvas.addEventListener('mousemove', (e) => this.drag(e));
-        this.canvas.addEventListener('mouseup', () => this.shoot());
-        window.addEventListener('resize', () => this.setCanvasSize());
+    setupEvents() {
+        this.canvas.addEventListener('mousedown', this.startDrag.bind(this));
+        this.canvas.addEventListener('mousemove', this.drag.bind(this));
+        this.canvas.addEventListener('mouseup', this.shoot.bind(this));
+        this.canvas.addEventListener('touchstart', this.handleTouch.bind(this));
+        this.canvas.addEventListener('touchmove', this.handleTouch.bind(this));
+        this.canvas.addEventListener('touchend', this.shoot.bind(this));
+        window.addEventListener('resize', this.setCanvasSize.bind(this));
     }
  
     startDrag(e) {
-        if (!this.ball.isMoving) {
+        const rect = this.canvas.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        if (this.isPointInBall(x, y) && !this.ball.isMoving) {
             this.isDragging = true;
-            this.dragStart = {
-                x: e.offsetX,
-                y: e.offsetY
-            };
+            this.dragStart = { x, y };
         }
     }
  
     drag(e) {
-        if (this.isDragging) {
-            const rect = this.canvas.getBoundingClientRect();
-            this.dragEnd = {
-                x: e.clientX - rect.left,
-                y: e.clientY - rect.top
-            };
-        }
+        if (!this.isDragging) return;
+        
+        const rect = this.canvas.getBoundingClientRect();
+        this.dragEnd = {
+            x: e.clientX - rect.left,
+            y: e.clientY - rect.top
+        };
     }
  
     shoot() {
-        if (this.isDragging) {
-            this.isDragging = false;
-            this.ball.isMoving = true;
+        if (!this.isDragging) return;
+        
+        this.isDragging = false;
+        this.ball.isMoving = true;
+        
+        const power = 0.15;
+        const dx = this.dragStart.x - this.dragEnd.x;
+        const dy = this.dragStart.y - this.dragEnd.y;
+        
+        this.ball.speed.x = dx * power;
+        this.ball.speed.y = dy * power;
+    }
  
-            // Расчет силы броска
-            const dx = this.dragStart.x - this.dragEnd.x;
-            const dy = this.dragStart.y - this.dragEnd.y;
-            const distance = Math.sqrt(dx * dx + dy * dy);
-            
-            // Ограничение максимальной силы
-            const maxPower = 20;
-            const power = Math.min(distance / 10, maxPower);
-            
-            this.ball.speed.x = (dx / distance) * power;
-            this.ball.speed.y = (dy / distance) * power;
+    handleTouch(e) {
+        e.preventDefault();
+        const touch = e.touches[0];
+        const rect = this.canvas.getBoundingClientRect();
+        const x = touch.clientX - rect.left;
+        const y = touch.clientY - rect.top;
+        
+        if (e.type === 'touchstart') {
+            this.startDrag({ clientX: touch.clientX, clientY: touch.clientY });
+        } else if (e.type === 'touchmove') {
+            this.drag({ clientX: touch.clientX, clientY: touch.clientY });
         }
     }
  
-    update() {
-        if (this.ball.isMoving) {
-            // Физика
-            this.ball.speed.y += this.ball.gravity;
-            this.ball.x += this.ball.speed.x;
-            this.ball.y += this.ball.speed.y;
- 
-            // Трение
-            this.ball.speed.x *= this.ball.friction;
-            this.ball.speed.y *= this.ball.friction;
- 
-            // Коллизии
-            this.checkWallCollision();
-            this.checkHoopCollision();
- 
-            // Сброс мяча если улетел
-            if (this.ball.y > this.canvas.height + 50) {
-                this.resetBall();
-            }
+ isPointInBall(x, y) {
+    const dx = this.ball.x - x;
+    const dy = this.ball.y - y;
+    return Math.sqrt(dx * dx + dy * dy) <= this.ball.radius;
+}
+
+update() {
+    if (this.ball.isMoving) {
+        // Гравитация
+        this.ball.speed.y += 0.5;
+        
+        // Обновление позиции
+        this.ball.x += this.ball.speed.x;
+        this.ball.y += this.ball.speed.y;
+        
+        // Трение
+        this.ball.speed.x *= 0.99;
+        this.ball.speed.y *= 0.99;
+        
+        // Проверка столкновений
+        this.checkCollisions();
+        
+        // Проверка попадания
+        this.checkHoopCollision();
+    }
+}
+
+checkCollisions() {
+    // Столкновение со стенами
+    if (this.ball.x < this.ball.radius) {
+        this.ball.x = this.ball.radius;
+        this.ball.speed.x *= -0.8;
+    }
+    if (this.ball.x > this.canvas.width - this.ball.radius) {
+        this.ball.x = this.canvas.width - this.ball.radius;
+        this.ball.speed.x *= -0.8;
+    }
+    
+    // Столкновение с полом и потолком
+    if (this.ball.y < this.ball.radius) {
+        this.ball.y = this.ball.radius;
+        this.ball.speed.y *= -0.8;
+    }
+    if (this.ball.y > this.canvas.height - this.ball.radius) {
+        this.ball.y = this.canvas.height - this.ball.radius;
+        this.ball.speed.y *= -0.8;
+        
+        // Остановка мяча при малой скорости
+        if (Math.abs(this.ball.speed.y) < 0.5) {
+            this.ball.isMoving = false;
+            this.resetBall();
         }
     }
- 
-    checkWallCollision() {
-        // Боковые стены
-        if (this.ball.x < this.ball.radius || 
-            this.ball.x > this.canvas.width - this.ball.radius) {
-            this.ball.speed.x *= -0.7;
-        }
- 
-        // Пол и потолок
-        if (this.ball.y < this.ball.radius || 
-            this.ball.y > this.canvas.height - this.ball.radius) {
-            this.ball.speed.y *= -0.7;
-        }
+}
+
+checkHoopCollision() {
+    const ballInHoopArea = 
+        this.ball.x > this.hoop.x &&
+        this.ball.x < this.hoop.x + this.hoop.width &&
+        this.ball.y > this.hoop.y &&
+        this.ball.y < this.hoop.y + this.hoop.height;
+        
+    if (ballInHoopArea && this.ball.speed.y > 0) {
+        this.score += 2;
+        this.updateScore();
+        this.createScoreAnimation();
+        this.resetBall();
     }
- 
-    checkHoopCollision() {
-        const ballInHoopArea = 
-            this.ball.x > this.hoop.x &&
-            this.ball.x < this.hoop.x + this.hoop.width &&
-            this.ball.y > this.hoop.y &&
-            this.ball.y < this.hoop.y + this.hoop.height;
- 
-        if (ballInHoopArea && this.ball.speed.y > 0) {
-            this.score += 2;
-            this.updateScore();
-            this.showScoreAnimation();
-        }
-    }
- 
-    updateScore() {
-        const scoreElement = document.querySelector('.score span');
+}
+
+updateScore() {
+    const scoreElement = document.querySelector('.score-value');
+    if (scoreElement) {
         scoreElement.textContent = this.score;
+        scoreElement.classList.add('score-updated');
+        setTimeout(() => {
+            scoreElement.classList.remove('score-updated');
+        }, 300);
     }
- 
-    showScoreAnimation() {
-        const scoreAnim = document.createElement('div');
-        scoreAnim.className = 'score-popup';
-        scoreAnim.textContent = '+2';
-        scoreAnim.style.left = `${this.ball.x}px`;
-        scoreAnim.style.top = `${this.ball.y}px`;
-        document.body.appendChild(scoreAnim);
-        
-        setTimeout(() => scoreAnim.remove(), 1000);
-    }
- 
-    draw() {
-        // Очистка канваса
-        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
- 
-        // Рисуем кольцо
-        this.drawHoop();
-        
-        // Рисуем мяч
-        this.drawBall();
- 
-        // Рисуем линию прицеливания
-        if (this.isDragging && this.dragEnd) {
-            this.drawAimLine();
-        }
-    }
- 
-    drawHoop() {
-        // Щит
-        this.ctx.fillStyle = 'rgba(255,255,255,0.1)';
-        this.ctx.fillRect(
-            this.hoop.x + this.hoop.width,
-            this.hoop.y - 30,
-            10,
-            100
-        );
- 
-        // Кольцо
-        this.ctx.beginPath();
-        this.ctx.arc(
-            this.hoop.x + this.hoop.width / 2,
-            this.hoop.y + this.hoop.height / 2,
-            this.hoop.width / 2,
-            0,
-            Math.PI * 2
-        );
-        this.ctx.strokeStyle = '#ff0055';
-        this.ctx.lineWidth = 3;
-        this.ctx.stroke();
-    }
- 
-    drawBall() {
-        this.ctx.beginPath();
-        this.ctx.arc(
-            this.ball.x,
-            this.ball.y,
-            this.ball.radius,
-            0,
-            Math.PI * 2
-        );
-        this.ctx.fillStyle = '#ff0055';
-        this.ctx.fill();
- 
-        // Линии на мяче
-        this.ctx.strokeStyle = '#000';
-        this.ctx.lineWidth = 2;
-        this.ctx.stroke();
-    }
- 
-    drawAimLine() {
+}
+
+createScoreAnimation() {
+    const animation = document.createElement('div');
+    animation.className = 'score-animation';
+    animation.textContent = '+2';
+    animation.style.left = `${this.ball.x}px`;
+    animation.style.top = `${this.ball.y}px`;
+    
+    this.canvas.parentElement.appendChild(animation);
+    setTimeout(() => animation.remove(), 1000);
+}
+
+drawAimLine() {
+    if (this.isDragging && this.dragEnd) {
         this.ctx.beginPath();
         this.ctx.moveTo(this.dragStart.x, this.dragStart.y);
         this.ctx.lineTo(this.dragEnd.x, this.dragEnd.y);
-        this.ctx.strokeStyle = 'rgba(255,0,85,0.5)';
+        this.ctx.strokeStyle = '#ff0055';
         this.ctx.lineWidth = 2;
+        this.ctx.setLineDash([5, 5]);
+        this.ctx.stroke();
+        this.ctx.setLineDash([]);
+    }
+}
+
+draw() {
+    // Очистка канваса
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    
+    // Рисуем кольцо
+    this.drawHoop();
+    
+    // Рисуем мяч
+    this.drawBall();
+    
+    // Рисуем линию прицеливания
+    this.drawAimLine();
+}
+
+drawHoop() {
+    // Щит
+    this.ctx.fillStyle = 'rgba(255,255,255,0.1)';
+    this.ctx.fillRect(
+        this.hoop.x + this.hoop.width,
+        this.hoop.y - 30,
+        10,
+        100
+    );
+    
+    // Кольцо
+    this.ctx.beginPath();
+    this.ctx.arc(
+        this.hoop.x + this.hoop.width / 2,
+        this.hoop.y + this.hoop.height / 2,
+        this.hoop.width / 2,
+        0,
+        Math.PI * 2
+    );
+    this.ctx.strokeStyle = '#ff0055';
+    this.ctx.lineWidth = 3;
+    this.ctx.stroke();
+    
+    // Сетка
+    this.drawNet();
+}
+
+drawNet() {
+    const netStartX = this.hoop.x + this.hoop.width / 2;
+    const netStartY = this.hoop.y + this.hoop.height / 2;
+    const netLength = 40;
+    const segments = 8;
+    
+    for (let i = 0; i < segments; i++) {
+        this.ctx.beginPath();
+        this.ctx.moveTo(
+            netStartX - 20 + (40 / segments) * i,
+            netStartY
+        );
+        this.ctx.lineTo(
+            netStartX - 15 + (30 / segments) * i,
+            netStartY + netLength
+        );
+        this.ctx.strokeStyle = 'rgba(255,255,255,0.2)';
+        this.ctx.lineWidth = 1;
         this.ctx.stroke();
     }
- 
-    animate() {
-        this.update();
-        this.draw();
-        requestAnimationFrame(() => this.animate());
-    }
- }
- 
- // Инициализация всех компонентов
- function initBasketballGame() {
-    new BasketballGame();
- }
- 
- // NBA Widget
-class NBAWidget {
-    constructor() {
-        this.container = document.querySelector('.scores-grid');
-        this.teams = {
-            'LAL': { name: 'Lakers', color: '#552583' },
-            'BOS': { name: 'Celtics', color: '#008348' },
-            'GSW': { name: 'Warriors', color: '#1D428A' },
-            'MIA': { name: 'Heat', color: '#98002E' },
-            'CHI': { name: 'Bulls', color: '#CE1141' }
-        };
-        this.init();
-    }
-
-    async init() {
-        await this.fetchScores();
-        this.startAutoRefresh();
-    }
-
-    async fetchScores() {
-        // В реальном проекте здесь был бы API запрос
-        const mockGames = [
-            {
-                homeTeam: 'LAL',
-                awayTeam: 'BOS',
-                homeScore: Math.floor(Math.random() * 30) + 90,
-                awayScore: Math.floor(Math.random() * 30) + 90,
-                quarter: 4,
-                timeLeft: '2:45'
-            },
-            {
-                homeTeam: 'GSW',
-                awayTeam: 'MIA',
-                homeScore: Math.floor(Math.random() * 30) + 90,
-                awayScore: Math.floor(Math.random() * 30) + 90,
-                quarter: 3,
-                timeLeft: '5:18'
-            }
-        ];
-
-        this.updateScores(mockGames);
-    }
-
-    updateScores(games) {
-        this.container.innerHTML = games.map(game => this.createScoreCard(game)).join('');
-    }
-
-    createScoreCard(game) {
-        return `
-            <div class="game-score-card">
-                <div class="team home" style="border-color: ${this.teams[game.homeTeam].color}">
-                    <div class="team-info">
-                        <span class="team-name">${this.teams[game.homeTeam].name}</span>
-                        <span class="team-score">${game.homeScore}</span>
-                    </div>
-                </div>
-                <div class="game-status">
-                    <div class="quarter">Q${game.quarter}</div>
-                    <div class="time">${game.timeLeft}</div>
-                </div>
-                <div class="team away" style="border-color: ${this.teams[game.awayTeam].color}">
-                    <div class="team-info">
-                        <span class="team-name">${this.teams[game.awayTeam].name}</span>
-                        <span class="team-score">${game.awayScore}</span>
-                    </div>
-                </div>
-            </div>
-        `;
-    }
-
-    startAutoRefresh() {
-        setInterval(() => this.fetchScores(), 30000);
-    }
 }
 
-// Facts Game
-class BasketballFacts {
-    constructor() {
-        this.facts = [
-            "Баскетбол был изобретен в 1891 году Джеймсом Нейсмитом",
-            "Первый профессиональный матч состоялся в 1896 году",
-            "Высота кольца составляет 3.05 метра",
-            "Мировой рекорд по трехочковым подряд: 193 попадания",
-            "Карим Абдул-Джаббар набрал 38,387 очков за карьеру",
-            "Уилт Чемберлен набрал 100 очков в одной игре",
-            "Первоначально в баскетбол играли футбольным мячом",
-            "NBA была основана 6 июня 1946 года",
-            "Самая результативная игра в истории: 186-184",
-            "Размер баскетбольной площадки в NBA: 28.65 × 15.24 метра"
-        ];
-        
-        this.currentFact = '';
-        this.box = document.querySelector('.mystery-box');
-        this.factText = document.querySelector('.fact-text');
-        this.button = document.querySelector('.fact-button');
-        
-        this.init();
-    }
-
-    init() {
-        this.button.addEventListener('click', () => this.revealFact());
-    }
-
-    revealFact() {
-        if (this.button.disabled) return;
-        
-        this.button.disabled = true;
-        
-        // Выбираем новый факт
-        let newFact;
-        do {
-            newFact = this.facts[Math.floor(Math.random() * this.facts.length)];
-        } while (newFact === this.currentFact);
-        
-        this.currentFact = newFact;
-
-        // Анимация открытия
-        this.box.classList.add('opening');
-        
-        setTimeout(() => {
-            this.factText.style.opacity = '0';
-            
-            setTimeout(() => {
-                this.factText.textContent = this.currentFact;
-                this.factText.style.opacity = '1';
-                
-                this.box.classList.add('opened');
-                
-                setTimeout(() => {
-                    this.box.classList.remove('opening', 'opened');
-                    this.button.disabled = false;
-                }, 3000);
-            }, 300);
-        }, 500);
-    }
-}
-
-// Визуальные эффекты
-class VisualEffects {
-    constructor() {
-        this.initGlitchEffect();
-        this.initParallaxEffect();
-    }
-
-    initGlitchEffect() {
-        const glitchTexts = document.querySelectorAll('.glitch-text');
-        
-        glitchTexts.forEach(text => {
-            setInterval(() => {
-                if (Math.random() < 0.1) {
-                    text.style.textShadow = `
-                        2px 2px var(--primary),
-                        -2px -2px var(--secondary)
-                    `;
-                    
-                    setTimeout(() => {
-                        text.style.textShadow = '';
-                    }, 100);
-                }
-            }, 2000);
-        });
-    }
-
-    initParallaxEffect() {
-        document.addEventListener('mousemove', (e) => {
-            const { clientX, clientY } = e;
-            const centerX = window.innerWidth / 2;
-            const centerY = window.innerHeight / 2;
-            
-            document.querySelectorAll('[data-parallax]').forEach(el => {
-                const speed = el.dataset.parallax || 0.1;
-                const x = (centerX - clientX) * speed;
-                const y = (centerY - clientY) * speed;
-                
-                el.style.transform = `translate3d(${x}px, ${y}px, 0)`;
-            });
-        });
-    }
-}
-
-// Инициализация всего
-document.addEventListener('DOMContentLoaded', () => {
-    new BasketballGame();
-    new BasketballFacts();
-    new NBAWidget();
-    new VisualEffects();
+drawBall() {
+    // Мяч
+    this.ctx.beginPath();
+    this.ctx.arc(this.ball.x, this.ball.y, this.ball.radius, 0, Math.PI * 2);
+    this.ctx.fillStyle = '#ff0055';
+    this.ctx.fill();
     
-    // Дополнительные инициализации
-    initParticles();
-    initCategoryCards();
-});
-
-function initParticles() {
-    const particlesContainer = document.querySelector('.particles');
-    for (let i = 0; i < 50; i++) {
-        createParticle(particlesContainer);
-    }
+    // Линии на мяче
+    this.drawBallLines();
 }
 
-function initCategoryCards() {
-    const cards = document.querySelectorAll('.category-card');
+drawBallLines() {
+    const rotation = this.ball.speed.x * 0.1;
     
-    cards.forEach(card => {
-        card.addEventListener('mouseenter', (e) => {
-            const { left, top, width, height } = card.getBoundingClientRect();
-            const x = (e.clientX - left) / width;
-            const y = (e.clientY - top) / height;
-            
-            const rotateX = (y - 0.5) * 20;
-            const rotateY = (x - 0.5) * 20;
-            
-            card.style.transform = `
-                perspective(1000px)
-                rotateX(${rotateX}deg)
-                rotateY(${rotateY}deg)
-                scale3d(1.05, 1.05, 1.05)
-            `;
-        });
-        
-        card.addEventListener('mouseleave', () => {
-            card.style.transform = '';
-        });
-    });
+    // Сохраняем текущее состояние контекста
+    this.ctx.save();
+    
+    // Перемещаем и вращаем контекст
+    this.ctx.translate(this.ball.x, this.ball.y);
+    this.ctx.rotate(rotation);
+    
+    // Горизонтальная линия
+    this.ctx.beginPath();
+    this.ctx.moveTo(-this.ball.radius, 0);
+    this.ctx.lineTo(this.ball.radius, 0);
+    this.ctx.strokeStyle = '#000';
+    this.ctx.lineWidth = 2;
+    this.ctx.stroke();
+    
+    // Вертикальная линия
+    this.ctx.beginPath();
+    this.ctx.moveTo(0, -this.ball.radius);
+    this.ctx.lineTo(0, this.ball.radius);
+    this.ctx.stroke();
+    
+    // Восстанавливаем состояние контекста
+    this.ctx.restore();
+}
+
+// Метод анимации
+animate() {
+    // Обновляем состояние
+    this.update();
+    // Отрисовываем
+    this.draw();
+    // Запрашиваем следующий кадр
+    requestAnimationFrame(() => this.animate());
+}
 }
