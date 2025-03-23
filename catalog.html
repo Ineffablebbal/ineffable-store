@@ -2,173 +2,496 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Каталог - INEFFABLE</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Каталог | INEFFABLE • Premium Basketball Store</title>
+    
+    <!-- Шрифты -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Стили -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/catalog.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
+    <!-- Баннер тестового режима -->
+    <div class="test-mode-banner">
+        <i class="fas fa-code"></i> Сайт работает в тестовом режиме
+    </div>
+
+    <!-- Фоновые эффекты -->
+    <div class="background-effects">
+        <div class="cyber-grid"></div>
+        <div class="particles"></div>
+        <div class="glitch-overlay"></div>
+        <div class="noise-texture"></div>
+    </div>
+
+    <!-- Navigation -->
     <nav class="navbar">
         <div class="navbar-container">
-            <div class="logo">INEFFABLE</div>
-            <ul class="nav-menu">
-                <li><a href="index.html">Главная</a></li>
-                <li><a href="catalog.html" class="active">Каталог</a></li>
-                <li><a href="about.html">О нас</a></li>
-                <li><a href="contact.html">Контакты</a></li>
-            </ul>
-            <div class="nav-icons">
-                <i class="fas fa-search search-icon"></i>
-                <i class="fas fa-user"></i>
-                <div class="cart-icon">
+            <div class="nav-left">
+                <button class="mobile-menu-btn" aria-label="Меню">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <a href="index.html" class="logo">
+                    <span class="logo-text" data-text="INEFFABLE">INEFFABLE</span>
+                </a>
+            </div>
+
+            <div class="nav-menu">
+                <ul class="nav-links">
+                    <li><a href="index.html" class="nav-link">ГЛАВНАЯ</a></li>
+                    <li><a href="catalog.html" class="nav-link active">КАТАЛОГ</a></li>
+                    <li><a href="index.html#about" class="nav-link">О НАС</a></li>
+                    <li><a href="index.html#contacts" class="nav-link">КОНТАКТЫ</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-actions">
+                <div class="search-container">
+                    <button class="search-toggle" aria-label="Поиск">
+                        <i class="fas fa-search"></i>
+                    </button>
+                    <div class="search-panel">
+                        <form class="search-form">
+                            <input type="text" placeholder="Поиск..." class="search-input">
+                            <button type="submit" class="search-submit">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <a href="account.html" class="nav-btn" aria-label="Профиль">
+                    <i class="fas fa-user"></i>
+                </a>
+                <a href="javascript:void(0)" class="nav-btn cart-btn" aria-label="Корзина">
                     <i class="fas fa-shopping-cart"></i>
                     <span class="cart-count">0</span>
-                </div>
-            </div>
-            <div class="burger-menu">
-                <span></span>
-                <span></span>
-                <span></span>
+                </a>
             </div>
         </div>
     </nav>
 
-    <main class="catalog-container">
-        <aside class="catalog-sidebar">
-            <div class="category-filters">
-                <h3>Категории</h3>
-                <div class="category-group">
-                    <h4>Баскетбол</h4>
-                    <ul>
-                        <li><a href="#" class="filter-link active">Все</a></li>
-                        <li><a href="#" class="filter-link">Мячи</a></li>
-                        <li><a href="#" class="filter-link">Кроссовки</a></li>
-                        <li><a href="#" class="filter-link">Джерси</a></li>
-                        <li><a href="#" class="filter-link">Шорты</a></li>
-                        <li><a href="#" class="filter-link">Защита</a></li>
-                    </ul>
-                </div>
-
-                <div class="category-group">
-                    <h4>Футбол</h4>
-                    <ul>
-                        <li><a href="#" class="filter-link">Мячи</a></li>
-                        <li><a href="#" class="filter-link">Бутсы</a></li>
-                        <li><a href="#" class="filter-link">Форма</a></li>
-                    </ul>
-                </div>
-
-                <div class="category-group">
-                    <h4>Волейбол</h4>
-                    <ul>
-                        <li><a href="#" class="filter-link">Мячи</a></li>
-                        <li><a href="#" class="filter-link">Кроссовки</a></li>
-                        <li><a href="#" class="filter-link">Форма</a></li>
-                    </ul>
-                </div>
-
-                <div class="category-group">
-                    <h4>Одежда</h4>
-                    <ul>
-                        <li><a href="#" class="filter-link">Футболки</a></li>
-                        <li><a href="#" class="filter-link">Худи</a></li>
-                        <li><a href="#" class="filter-link">Штаны</a></li>
-                        <li><a href="#" class="filter-link">Шорты</a></li>
-                    </ul>
-                </div>
-
-                <div class="category-group">
-                    <h4>Аксессуары</h4>
-                    <ul>
-                        <li><a href="#" class="filter-link">Рюкзаки</a></li>
-                        <li><a href="#" class="filter-link">Носки</a></li>
-                        <li><a href="#" class="filter-link">Термобелье</a></li>
-                        <li><a href="#" class="filter-link">Массажеры</a></li>
-                        <li><a href="#" class="filter-link">Постеры</a></li>
-                    </ul>
+    <!-- Main Content -->
+    <main>
+        <!-- Catalog Header -->
+        <section class="catalog-header">
+            <div class="catalog-title-container">
+                <h1 class="category-title glitch-text" data-text="КАТАЛОГ">КАТАЛОГ</h1>
+                <div class="catalog-breadcrumbs">
+                    <a href="index.html">Главная</a>
+                    <span>/</span>
+                    <span class="current-category">Каталог</span>
                 </div>
             </div>
+        </section>
 
-            <div class="price-filter">
-                <h3>Цена</h3>
-                <div class="price-inputs">
-                    <input type="number" placeholder="От" class="price-input">
-                    <input type="number" placeholder="До" class="price-input">
-                    <button class="apply-price">Применить</button>
+        <!-- Category Navigation -->
+        <section class="category-nav">
+            <div class="category-nav-container">
+                <div class="category-nav-items">
+                    <a href="catalog.html" class="category-nav-item active" data-category="all">
+                        <i class="fas fa-th"></i>
+                        <span>Все товары</span>
+                    </a>
+                    <a href="catalog.html?category=shoes" class="category-nav-item" data-category="shoes">
+                        <i class="fas fa-shoe-prints"></i>
+                        <span>Кроссовки</span>
+                    </a>
+                    <a href="catalog.html?category=balls" class="category-nav-item" data-category="balls">
+                        <i class="fas fa-basketball-ball"></i>
+                        <span>Мячи</span>
+                    </a>
+                    <a href="catalog.html?category=uniform" class="category-nav-item" data-category="uniform">
+                        <i class="fas fa-tshirt"></i>
+                        <span>Форма</span>
+                    </a>
+                    <a href="catalog.html?category=accessories" class="category-nav-item" data-category="accessories">
+                        <i class="fas fa-hand-holding"></i>
+                        <span>Аксессуары</span>
+                    </a>
+                    <a href="catalog.html?category=merch" class="category-nav-item" data-category="merch">
+                        <i class="fas fa-gift"></i>
+                        <span>Фигня</span>
+                    </a>
                 </div>
             </div>
-        </aside>
+        </section>
 
-        <section class="catalog-content">
-            <div class="catalog-header">
-                <h1>Каталог товаров</h1>
-                <div class="catalog-controls">
-                    <select class="sort-select">
-                        <option value="popular">По популярности</option>
-                        <option value="price-low">Сначала дешевле</option>
-                        <option value="price-high">Сначала дороже</option>
-                        <option value="new">Новинки</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="products-grid">
-                <!-- Пример карточки товара -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="images/products/ball1.jpg" alt="Баскетбольный мяч">
-                        <div class="product-badges">
-                            <span class="badge new">New</span>
-                            <span class="badge discount">-20%</span>
-                        </div>
-                        <div class="quick-view">
-                            <i class="fas fa-eye"></i>
-                            Быстрый просмотр
-                        </div>
+        <!-- Catalog Content -->
+        <section class="catalog-section">
+            <div class="catalog-layout">
+                <!-- Filters Sidebar -->
+                <div class="catalog-sidebar">
+                    <div class="filter-header">
+                        <h3 class="filter-header-title">Фильтры</h3>
+                        <button type="button" class="mobile-filter-toggle">
+                            <i class="fas fa-sliders-h"></i>
+                        </button>
                     </div>
-                    <div class="product-info">
-                        <div class="product-category">Баскетбол • Мячи</div>
-                        <h3>Баскетбольный мяч Wilson NBA</h3>
-                        <div class="product-price">
-                            <span class="current-price">499 000 сум</span>
-                            <span class="old-price">599 000 сум</span>
+                    
+                    <form class="catalog-filters">
+                        <div class="filter-group">
+                            <h3 class="filter-title">Цена</h3>
+                            <div class="filter-price">
+                                <input type="range" id="price-range" min="0" max="5000000" step="100000" value="5000000">
+                                <div class="price-range-labels">
+                                    <span>0 сум</span>
+                                    <span id="price-value">5 000 000 сум</span>
+                                </div>
+                            </div>
                         </div>
-                        <button class="add-to-cart">
-                            <i class="fas fa-shopping-cart"></i>
-                            В корзину
+
+                        <div class="filter-group">
+                            <h3 class="filter-title">Бренды</h3>
+                            <div class="filter-options">
+                                <label class="filter-checkbox">
+                                    <input type="checkbox" class="brand-filter" value="nike">
+                                    <span class="checkbox-label">Nike</span>
+                                </label>
+                                <label class="filter-checkbox">
+                                    <input type="checkbox" class="brand-filter" value="jordan">
+                                    <span class="checkbox-label">Jordan</span>
+                                </label>
+                                <label class="filter-checkbox">
+                                    <input type="checkbox" class="brand-filter" value="adidas">
+                                    <span class="checkbox-label">Adidas</span>
+                                </label>
+                                <label class="filter-checkbox">
+                                    <input type="checkbox" class="brand-filter" value="lining">
+                                    <span class="checkbox-label">Li Ning</span>
+                                </label>
+                                <label class="filter-checkbox">
+                                    <input type="checkbox" class="brand-filter" value="anta">
+                                    <span class="checkbox-label">Anta</span>
+                                </label>
+                                <label class="filter-checkbox">
+                                    <input type="checkbox" class="brand-filter" value="wilson">
+                                    <span class="checkbox-label">Wilson</span>
+                                </label>
+                                <label class="filter-checkbox">
+                                    <input type="checkbox" class="brand-filter" value="spalding">
+                                    <span class="checkbox-label">Spalding</span>
+                                </label>
+                                <label class="filter-checkbox">
+                                    <input type="checkbox" class="brand-filter" value="under-armour">
+                                    <span class="checkbox-label">Under Armour</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="filter-group">
+                            <h3 class="filter-title">Дополнительно</h3>
+                            <div class="filter-options">
+                                <label class="filter-checkbox">
+                                    <input type="checkbox" id="in-stock-only">
+                                    <span class="checkbox-label">Только в наличии</span>
+                                </label>
+                                <label class="filter-checkbox">
+                                    <input type="checkbox" id="sale-only">
+                                    <span class="checkbox-label">Только со скидкой</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="filter-group">
+                            <h3 class="filter-title">Сортировка</h3>
+                            <div class="filter-select">
+                                <select id="sort-select">
+                                    <option value="default">По умолчанию</option>
+                                    <option value="price-asc">По цене (возрастание)</option>
+                                    <option value="price-desc">По цене (убывание)</option>
+                                    <option value="name-asc">По названию (А-Я)</option>
+                                    <option value="name-desc">По названию (Я-А)</option>
+                                    <option value="newest">Сначала новинки</option>
+                                    <option value="bestsellers">Сначала хиты продаж</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="filter-actions">
+                            <button type="submit" class="apply-filters-btn">Применить</button>
+                            <button type="button" class="reset-filters">Сбросить</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Products Grid -->
+                <div class="catalog-content">
+                    <div class="catalog-container">
+                        <!-- Товары будут загружены через JavaScript -->
+                    </div>
+                    
+                    <!-- Pagination -->
+                    <div class="catalog-pagination">
+                        <button class="pagination-btn prev-page" disabled>
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <div class="pagination-numbers">
+                            <button class="pagination-number active">1</button>
+                            <button class="pagination-number">2</button>
+                            <button class="pagination-number">3</button>
+                        </div>
+                        <button class="pagination-btn next-page">
+                            <i class="fas fa-chevron-right"></i>
                         </button>
                     </div>
                 </div>
-                <!-- Конец карточки товара -->
-            </div>
-
-            <div class="pagination">
-                <a href="#" class="active">1</a>
-                <a href="#">2</a>
-                <a href="#">3</a>
-                <a href="#">4</a>
-                <span>...</span>
-                <a href="#">10</a>
             </div>
         </section>
     </main>
 
-    <footer>
+    <!-- Footer -->
+    <footer id="contacts" class="footer">
         <div class="footer-content">
-            <div class="footer-section">
-                <h3>INEFFABLE</h3>
-                <p>Премиальная спортивная экипировка по доступным ценам</p>
+            <!-- Main Footer -->
+            <div class="footer-main">
+                <!-- Brand Section -->
+                <div class="footer-section brand-section">
+                    <h3 class="glitch-text" data-text="INEFFABLE">INEFFABLE</h3>
+                    <p class="brand-description">Премиальная баскетбольная экипировка</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link" target="_blank" rel="noopener">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link" target="_blank" rel="noopener">
+                            <i class="fab fa-telegram"></i>
+                        </a>
+                        <a href="#" class="social-link" target="_blank" rel="noopener">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="footer-section links-section">
+                    <h4>Навигация</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Главная</a></li>
+                        <li><a href="catalog.html">Каталог</a></li>
+                        <li><a href="delivery.html">Доставка</a></li>
+                        <li><a href="index.html#contacts">Контакты</a></li>
+                    </ul>
+                </div>
+
+                <!-- Categories -->
+                <div class="footer-section categories-section">
+                    <h4>Категории</h4>
+                    <ul class="footer-links">
+                        <li><a href="catalog.html?category=shoes">Кроссовки</a></li>
+                        <li><a href="catalog.html?category=balls">Мячи</a></li>
+                        <li><a href="catalog.html?category=uniform">Форма</a></li>
+                        <li><a href="catalog.html?category=accessories">Аксессуары</a></li>
+                        <li><a href="catalog.html?category=merch">Фигня</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="footer-section contact-section">
+                    <h4>Контакты</h4>
+                    <div class="contact-info">
+                        <p>
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:ineffablebbal@gmail.com">ineffablebbal@gmail.com</a>
+                        </p>
+                        <p>
+                            <i class="fas fa-phone"></i>
+                            <a href="tel:+998946800409">+998 94 680 04 09</a>
+                        </p>
+                        <p>
+                            <i class="fas fa-clock"></i>
+                            <span>09:00 - 21:00 (Ежедневно)</span>
+                        </p>
+                    </div>
+                </div>
             </div>
-            <div class="footer-section">
-                <h3>Контакты</h3>
-                <p>Email: ineffablebbal@gmail.com</p>
-                <p>Телефон: +998 33 767 9009</p>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p class="copyright">&copy; 2024 INEFFABLE. Все права защищены.</p>
+                    <div class="payment-methods">
+                        <img src="images/payment/visa.svg" alt="Visa">
+                        <img src="images/payment/mastercard.svg" alt="Mastercard">
+                        <img src="images/payment/humo.svg" alt="Humo">
+                        <img src="images/payment/uzcard.svg" alt="Uzcard">
+                    </div>
+                </div>
             </div>
         </div>
     </footer>
 
-    <script src="js/main.js"></script>
+    <!-- Modals -->
+    <!-- Product Modal -->
+    <div class="modal product-modal">
+        <div class="modal-content">
+            <button class="modal-close">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="product-details">
+                <!-- Содержимое загружается динамически -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Modal -->
+    <div class="modal cart-modal">
+        <div class="modal-content">
+            <button class="modal-close">
+                <i class="fas fa-times"></i>
+            </button>
+            <h2 class="cart-title">Корзина</h2>
+            <div class="cart-items">
+                <!-- Содержимое корзины загружается динамически -->
+            </div>
+            <div class="cart-summary">
+                <div class="cart-total">
+                    <span>Итого:</span>
+                    <span class="total-price">0 сум</span>
+                </div>
+                <button class="checkout-btn">
+                    <i class="fas fa-credit-card"></i>
+                    <span>Оформить заказ</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div class="modal checkout-modal">
+        <div class="modal-content">
+            <button class="modal-close">
+                <i class="fas fa-times"></i>
+            </button>
+            <h2 class="checkout-title">Оформление заказа</h2>
+            <form id="checkout-form" class="checkout-form">
+                <div class="checkout-summary">
+                    <h3 class="checkout-summary-title">Ваш заказ</h3>
+                    <div class="checkout-summary-items">
+                        <!-- Товары в заказе загружаются динамически -->
+                    </div>
+                    <div class="checkout-summary-total">
+                        <span>Итого к оплате:</span>
+                        <span class="total-amount">0 сум</span>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="customer-name" class="form-label required-field">ФИО</label>
+                    <input type="text" id="customer-name" name="name" class="form-input" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="customer-phone" class="form-label required-field">Телефон</label>
+                    <input type="tel" id="customer-phone" name="phone" class="form-input" required placeholder="+998 xx xxx xx xx">
+                </div>
+                
+                <div class="form-group">
+                    <label for="customer-email" class="form-label">E-mail</label>
+                    <input type="email" id="customer-email" name="email" class="form-input" placeholder="example@mail.com">
+                </div>
+                
+                <div class="form-group">
+                    <label for="delivery-address" class="form-label required-field">Адрес доставки</label>
+                    <textarea id="delivery-address" name="address" class="form-textarea" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="delivery-method" class="form-label required-field">Способ доставки</label>
+                    <select id="delivery-method" name="delivery" class="form-select" required>
+                        <option value="">Выберите способ доставки</option>
+                        <option value="courier">Курьерская доставка</option>
+                        <option value="pickup">Самовывоз</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label required-field">Способ оплаты</label>
+                    <div class="payment-methods">
+                        <div class="payment-method" data-payment="card">
+                            <img src="images/payment/visa.svg" alt="Visa/Mastercard">
+                            <div class="payment-method-name">Visa/Mastercard</div>
+                        </div>
+                        <div class="payment-method" data-payment="uzcard">
+                            <img src="images/payment/uzcard.svg" alt="UzCard">
+                            <div class="payment-method-name">UzCard</div>
+                        </div>
+                        <div class="payment-method" data-payment="humo">
+                            <img src="images/payment/humo.svg" alt="Humo">
+                            <div class="payment-method-name">Humo</div>
+                        </div>
+                        <div class="payment-method" data-payment="cash">
+                            <i class="fas fa-money-bill-wave"></i>
+                            <div class="payment-method-name">Наличными</div>
+                        </div>
+                    </div>
+                    <input type="hidden" id="payment-method" name="payment" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="customer-comment" class="form-label">Комментарий к заказу</label>
+                    <textarea id="customer-comment" name="comment" class="form-textarea"></textarea>
+                </div>
+                
+                <button type="submit" class="checkout-submit">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Подтвердить заказ</span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="modal success-modal">
+        <div class="modal-content">
+            <button class="modal-close">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="success-content">
+                <div class="success-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h2 class="success-title">Заказ успешно оформлен!</h2>
+                <p class="success-message">Ваш заказ <span class="order-number">#12345</span> успешно оформлен. Мы свяжемся с вами в ближайшее время для подтверждения.</p>
+                <button class="success-button">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span>Вернуться к покупкам</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Search Modal -->
+    <div class="modal search-modal">
+        <div class="modal-content">
+            <button class="modal-close">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="search-container">
+                <form class="search-form">
+                    <input type="text" placeholder="Поиск по сайту..." class="search-input">
+                    <button type="submit" class="search-submit">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </form>
+                <div class="search-results">
+                    <!-- Результаты поиска будут загружены динамически -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/particles.js"></script>
+    <script src="js/background-effects.js"></script>
     <script src="js/catalog.js"></script>
 </body>
 </html>
