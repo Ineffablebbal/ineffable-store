@@ -16,8 +16,38 @@
     
     <!-- Стили -->
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Стили для баннера тестового режима */
+        .test-mode-banner {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(255, 0, 85, 0.9);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            z-index: 1000;
+            box-shadow: 0 0 15px rgba(255, 0, 85, 0.5);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.9; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.05); }
+        }
+    </style>
 </head>
 <body>
+    <!-- Баннер тестового режима -->
+    <div class="test-mode-banner">
+        <i class="fas fa-code"></i> Сайт работает в тестовом режиме
+    </div>
+
     <!-- Фоновые эффекты -->
     <div class="background-effects">
         <div class="cyber-grid"></div>
@@ -35,15 +65,15 @@
                     <span></span>
                     <span></span>
                 </button>
-                <a href="/" class="logo">
+                <a href="index.html" class="logo">
                     <span class="logo-text" data-text="INEFFABLE">INEFFABLE</span>
                 </a>
             </div>
 
             <div class="nav-menu">
                 <ul class="nav-links">
-                    <li><a href="/" class="nav-link active">ГЛАВНАЯ</a></li>
-                    <li><a href="/catalog" class="nav-link">КАТАЛОГ</a></li>
+                    <li><a href="index.html" class="nav-link active">ГЛАВНАЯ</a></li>
+                    <li><a href="catalog.html" class="nav-link">КАТАЛОГ</a></li>
                     <li><a href="#about" class="nav-link">О НАС</a></li>
                     <li><a href="#contacts" class="nav-link">КОНТАКТЫ</a></li>
                 </ul>
@@ -63,10 +93,10 @@
                         </form>
                     </div>
                 </div>
-                <a href="/account" class="nav-btn" aria-label="Профиль">
+                <a href="account.html" class="nav-btn" aria-label="Профиль">
                     <i class="fas fa-user"></i>
                 </a>
-                <a href="/cart" class="nav-btn cart-btn" aria-label="Корзина">
+                <a href="javascript:void(0)" class="nav-btn cart-btn" aria-label="Корзина">
                     <i class="fas fa-shopping-cart"></i>
                     <span class="cart-count">0</span>
                 </a>
@@ -140,7 +170,7 @@
     <section class="categories">
         <div class="categories-grid">
             <!-- Кроссовки -->
-            <a href="/catalog/shoes" class="category-card" data-category="shoes">
+            <a href="catalog.html?category=shoes" class="category-card" data-category="shoes">
                 <div class="card-inner">
                     <div class="card-image">
                         <img src="images/categories/shoes.jpg" alt="Basketball Shoes" loading="lazy">
@@ -159,7 +189,7 @@
             </a>
 
             <!-- Мячи -->
-            <a href="/catalog/balls" class="category-card" data-category="balls">
+            <a href="catalog.html?category=balls" class="category-card" data-category="balls">
                 <div class="card-inner">
                     <div class="card-image">
                         <img src="images/categories/balls.jpg" alt="Basketballs" loading="lazy">
@@ -178,7 +208,7 @@
             </a>
 
             <!-- Форма -->
-            <a href="/catalog/uniform" class="category-card" data-category="uniform">
+            <a href="catalog.html?category=uniform" class="category-card" data-category="uniform">
                 <div class="card-inner">
                     <div class="card-image">
                         <img src="images/categories/uniform.jpg" alt="Basketball Uniform" loading="lazy">
@@ -197,7 +227,7 @@
             </a>
 
             <!-- Аксессуары -->
-            <a href="/catalog/accessories" class="category-card" data-category="accessories">
+            <a href="catalog.html?category=accessories" class="category-card" data-category="accessories">
                 <div class="card-inner">
                     <div class="card-image">
                         <img src="images/categories/accessories.jpg" alt="Basketball Accessories" loading="lazy">
@@ -230,10 +260,10 @@
                         </div>
                     </div>
                     <div class="product-info">
-                        <h3 class="product-title">Air Jordan XXXVII</h3>
+                        <h3 class="product-title">Li Ning WOW 10 HIGH "Element"</h3>
                         <p class="product-category">Кроссовки</p>
                         <div class="product-price">
-                            <span class="current-price">цена</span>
+                            <span class="current-price">от 2,300,000 сум</span>
                         </div>
                     </div>
                     <button class="add-to-cart-btn">
@@ -250,10 +280,10 @@
                         </div>
                     </div>
                     <div class="product-info">
-                        <h3 class="product-title">Spalding NBA Official</h3>
+                        <h3 class="product-title">Wilson 3x3 official FIBA basketball</h3>
                         <p class="product-category">Мячи</p>
                         <div class="product-price">
-                            <span class="current-price">цена</span>
+                            <span class="current-price">535 000 сум</span>
                         </div>
                     </div>
                     <button class="add-to-cart-btn">
@@ -313,7 +343,7 @@
 
     <!-- CTA Section -->
     <section class="cta-section">
-        <a href="/catalog" class="mega-button">
+        <a href="catalog.html" class="mega-button">
             <span class="button-text">СМОТРЕТЬ КАТАЛОГ</span>
             <span class="button-glitch"></span>
             <div class="button-border">
@@ -332,10 +362,10 @@
             </div>
             <div class="about-text">
                 <p>Магазин <strong>INEFFABLE</strong> – это премиальная баскетбольная экипировка и аксессуары от ведущих мировых брендов.</p>
-                <p>Мы предлагаем оригинальную продукцию высочайшего качества для профессиональных спортсменов и любителей баскетбола.</p>
+                <p>Мы предлагаем разнообразную продукцию высочайшего качества для профессиональных спортсменов и любителей баскетбола.</p>
                 <p>Наша команда состоит из опытных специалистов и энтузиастов баскетбола, которые помогут подобрать идеальную экипировку для вашей игры.</p>
                 <ul class="about-features">
-                    <li><i class="fas fa-check"></i> качественная продукция</li>
+                    <li><i class="fas fa-check"></i> Качественная продукция</li>
                     <li><i class="fas fa-check"></i> Эксклюзивные модели</li>
                     <li><i class="fas fa-check"></i> Профессиональная консультация</li>
                     <li><i class="fas fa-check"></i> Быстрая доставка до 2х недель</li>
@@ -370,10 +400,10 @@
                 <div class="footer-section links-section">
                     <h4>Навигация</h4>
                     <ul class="footer-links">
-                        <li><a href="/catalog">Каталог</a></li>
-                        <li><a href="/about">О нас</a></li>
-                        <li><a href="/delivery">Доставка</a></li>
-                        <li><a href="/contacts">Контакты</a></li>
+                        <li><a href="catalog.html">Каталог</a></li>
+                        <li><a href="#about">О нас</a></li>
+                        <li><a href="delivery.html">Доставка</a></li>
+                        <li><a href="#contacts">Контакты</a></li>
                     </ul>
                 </div>
 
@@ -381,10 +411,10 @@
                 <div class="footer-section categories-section">
                     <h4>Категории</h4>
                     <ul class="footer-links">
-                        <li><a href="/catalog/shoes">Кроссовки</a></li>
-                        <li><a href="/catalog/balls">Мячи</a></li>
-                        <li><a href="/catalog/uniform">Форма</a></li>
-                        <li><a href="/catalog/accessories">Аксессуары</a></li>
+                        <li><a href="catalog.html?category=shoes">Кроссовки</a></li>
+                        <li><a href="catalog.html?category=balls">Мячи</a></li>
+                        <li><a href="catalog.html?category=uniform">Форма</a></li>
+                        <li><a href="catalog.html?category=accessories">Аксессуары</a></li>
                     </ul>
                 </div>
 
@@ -441,12 +471,64 @@
         </div>
     </div>
 
+    <!-- Cart Modal -->
+    <div class="modal cart-modal">
+        <div class="modal-content">
+            <button class="modal-close">
+                <i class="fas fa-times"></i>
+            </button>
+            <h2 class="cart-title">Корзина</h2>
+            <div class="cart-items">
+                <!-- Содержимое корзины загружается динамически -->
+                <div class="empty-cart">Ваша корзина пуста</div>
+            </div>
+            <div class="cart-summary">
+                <div class="cart-total">
+                    <span>Итого:</span>
+                    <span class="total-price">0 сум</span>
+                </div>
+                <button class="checkout-btn" disabled>
+                    <i class="fas fa-credit-card"></i>
+                    <span>Оформить заказ</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
 </main>
 
 <!-- Scripts -->
 <script src="js/particles.js"></script>
 <script src="js/background-effects.js"></script>
-<script src="js/nba-widget.js"></script>
 <script src="js/main.js"></script>
+<script>
+    // Инициализация корзины
+    document.addEventListener('DOMContentLoaded', function() {
+        // Открытие корзины по клику на кнопку
+        const cartBtn = document.querySelector('.cart-btn');
+        const cartModal = document.querySelector('.cart-modal');
+        
+        if (cartBtn && cartModal) {
+            cartBtn.addEventListener('click', function() {
+                cartModal.classList.add('active');
+            });
+            
+            // Закрытие модального окна
+            const closeBtn = cartModal.querySelector('.modal-close');
+            if (closeBtn) {
+                closeBtn.addEventListener('click', function() {
+                    cartModal.classList.remove('active');
+                });
+            }
+            
+            // Закрытие по клику вне контента
+            cartModal.addEventListener('click', function(e) {
+                if (e.target === cartModal) {
+                    cartModal.classList.remove('active');
+                }
+            });
+        }
+    });
+</script>
 </body>
 </html>
